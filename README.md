@@ -1,23 +1,23 @@
 # TP 14 : Conteneurisation avec Docker - Spring Boot
 
-## 📋 Description
+## Description
 Ce projet démontre la conteneurisation d'une application Spring Boot avec Docker et Docker Compose, incluant une base de données MySQL.
 
-## 🎯 Objectifs
+## Objectifs
 - Construire une image Docker à partir d'un projet Spring Boot
 - Exécuter et gérer un conteneur d'application
 - Configurer les variables d'environnement pour le conteneur
 - Déployer une base de données MySQL dans un second conteneur
 - Établir la communication entre conteneurs via Docker Compose
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 - **Java 17**
 - **Spring Boot 3.2.5**
 - **Docker & Docker Compose**
 - **MySQL 8.0**
 - **Maven**
 
-## 📦 Dépendances Spring Boot
+## Dépendances Spring Boot
 - Spring Web
 - Spring Data JPA
 - MySQL Driver
@@ -25,7 +25,7 @@ Ce projet démontre la conteneurisation d'une application Spring Boot avec Docke
 
 ---
 
-## 🚀 Étape 1 : Préparation du projet Spring Boot
+## Étape 1 : Préparation du projet Spring Boot
 
 ### Configuration
 Le projet a été créé via [Spring Initializr](https://start.spring.io) avec les paramètres suivants :
@@ -47,12 +47,12 @@ server.port=8080
 mvn clean package
 ```
 
-### 📸 Screenshot : Structure du projet
-<!-- Insérer ici la capture d'écran de la structure du projet -->
+### Structure du projet
+<img width="580" height="634" alt="Screenshot 2025-11-26 001152" src="https://github.com/user-attachments/assets/4c77151b-63a8-419f-872b-17ca9325e520" />
 
 ---
 
-## 🐳 Étape 2 : Écriture du Dockerfile
+## Étape 2 : Écriture du Dockerfile
 
 Le `Dockerfile` permet de créer une image Docker de l'application :
 
@@ -80,12 +80,9 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 - **EXPOSE** : Port utilisé par l'application
 - **ENTRYPOINT** : Commande de démarrage
 
-### 📸 Screenshot : Contenu du Dockerfile
-<!-- Insérer ici la capture d'écran du Dockerfile -->
-
 ---
 
-## 🏗️ Étape 3 : Construction et exécution de l'image Docker
+## Étape 3 : Construction et exécution de l'image Docker
 
 ### Construction de l'image
 ```bash
@@ -97,8 +94,8 @@ docker build -t ens/springdocker:1.0 .
 docker images
 ```
 
-### 📸 Screenshot : docker images
-<!-- Insérer ici la capture d'écran de la commande docker images -->
+### Screenshot : docker images
+<img width="986" height="227" alt="Screenshot 2025-11-26 001340" src="https://github.com/user-attachments/assets/8daa5b9e-50bc-4e59-9a80-ad874db5ab7e" />
 
 ### Exécution du conteneur
 ```bash
@@ -110,19 +107,13 @@ docker run -d -p 8080:8080 --name spring-app ens/springdocker:1.0
 docker ps
 ```
 
-### 📸 Screenshot : docker ps
-<!-- Insérer ici la capture d'écran de la commande docker ps -->
+### Screenshot : docker ps
+<img width="1770" height="301" alt="image" src="https://github.com/user-attachments/assets/d81a8c2d-3c1a-4009-80d5-ff3aa96869a6" />
 
 ### Consultation des logs
 ```bash
 docker logs -f spring-app
 ```
-
-### Test de l'application
-Ouvrir un navigateur à l'adresse : `http://localhost:8080`
-
-### 📸 Screenshot : Application dans le navigateur
-<!-- Insérer ici la capture d'écran du navigateur -->
 
 ### Arrêt et suppression du conteneur
 ```bash
@@ -132,7 +123,7 @@ docker rm spring-app
 
 ---
 
-## 🔗 Étape 4 : Ajout d'un conteneur MySQL avec Docker Compose
+## Étape 4 : Ajout d'un conteneur MySQL avec Docker Compose
 
 Le fichier `docker-compose.yml` orchestre l'application et la base de données :
 
@@ -176,28 +167,25 @@ volumes:
 - **volumes** : Persistance des données MySQL
 - **restart: always** : Redémarrage automatique en cas d'échec
 
-### 📸 Screenshot : Contenu docker-compose.yml
-<!-- Insérer ici la capture d'écran du fichier docker-compose.yml -->
-
 ---
 
-## ▶️ Étape 5 : Exécution avec Docker Compose
+## Étape 5 : Exécution avec Docker Compose
 
 ### Démarrage des conteneurs
 ```bash
 docker-compose up -d
 ```
 
-### 📸 Screenshot : docker-compose up
-<!-- Insérer ici la capture d'écran de la commande docker-compose up -->
+### Screenshot : docker-compose up
+<img width="1279" height="213" alt="image" src="https://github.com/user-attachments/assets/7dc6cd58-77b1-43a8-a233-0b355fd5093b" />
 
 ### Vérification des services actifs
 ```bash
 docker ps
 ```
 
-### 📸 Screenshot : docker ps (les 2 conteneurs)
-<!-- Insérer ici la capture d'écran montrant les deux conteneurs actifs -->
+### Screenshot : docker ps (les 2 conteneurs)
+<img width="1770" height="277" alt="image" src="https://github.com/user-attachments/assets/5203338f-5aa5-48ea-aebf-e12a3fc7372a" />
 
 ### Affichage des logs
 ```bash
@@ -209,30 +197,30 @@ Ou pour un service spécifique :
 docker-compose logs -f spring-app
 ```
 
-### 📸 Screenshot : Logs de l'application
-<!-- Insérer ici la capture d'écran des logs montrant le démarrage réussi -->
+### Screenshot : Logs de l'application
+<img width="1351" height="409" alt="image" src="https://github.com/user-attachments/assets/888883cf-7def-49bc-817a-e047380c893c" />
 
 ### Arrêt de l'environnement
 ```bash
 docker-compose down
 ```
+<img width="1784" height="247" alt="image" src="https://github.com/user-attachments/assets/498a5848-9d34-4ece-ae78-e17d54cf1aa6" />
 
 ---
 
-## ✅ Étape 6 : Validation
+##  Étape 6 : Validation
 
 ### Vérifications effectuées
-- ✅ L'application Spring Boot communique correctement avec MySQL
-- ✅ Les données persistent après redémarrage des conteneurs (grâce au volume)
-- ✅ Les ports 8080 et 3306 sont bien exposés
-- ✅ L'application démarre automatiquement après la base de données
+- L'application Spring Boot communique correctement avec MySQL
+- Les données persistent après redémarrage des conteneurs (grâce au volume)
+- Les ports 8080 et 3306 sont bien exposés
+- L'application démarre automatiquement après la base de données
 
-### 📸 Screenshot : Application fonctionnelle avec MySQL
-<!-- Insérer ici la capture d'écran de l'application fonctionnelle -->
+
 
 ---
 
-## 🔧 Commandes utiles
+## Commandes utiles
 
 ### Docker
 ```bash
@@ -278,7 +266,7 @@ docker-compose build
 
 ---
 
-## 📚 Extensions possibles
+## Extensions possibles
 
 ### 1. Ajouter phpMyAdmin
 Ajouter ce service dans `docker-compose.yml` :
@@ -308,7 +296,7 @@ docker push username/springdocker:1.0
 
 ---
 
-## 📝 Compétences acquises
+## Compétences acquises
 
 | Compétence | Description |
 |------------|-------------|
@@ -321,10 +309,5 @@ docker push username/springdocker:1.0
 ---
 
 ## 👤 Auteur
-- **Group** : ma.ens
-- **Cours** : Développement JakartaEE - Spring
+- **Nom** : Arroche Aya
 
----
-
-## 📄 Licence
-Projet éducatif - TP 14
