@@ -95,7 +95,7 @@ docker images
 ```
 
 ### Screenshot : docker images
-<img width="986" height="227" alt="Screenshot 2025-11-26 001340" src="https://github.com/user-attachments/assets/8daa5b9e-50bc-4e59-9a80-ad874db5ab7e" />
+<img width="1461" height="228" alt="image" src="https://github.com/user-attachments/assets/4084bffc-e6be-43b3-82a9-d155419fb105" />
 
 ### Exécution du conteneur
 ```bash
